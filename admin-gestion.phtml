@@ -1,0 +1,18 @@
+<a href="admin-portal.php">Retour</a>
+<a href="crud/user-account-create.php">ajouter un collaborateur</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+<table>
+    <tbody>
+        <?php foreach ($users as $user) : ?>
+            <tr>
+                <td style="border: 1px solid black;">
+                    <a href="user-account.php?id=<?php echo urlencode($user['userId']); ?>">
+                        <?php echo _escape($user['userName']); ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

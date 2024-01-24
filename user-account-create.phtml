@@ -1,0 +1,23 @@
+<!--user-account-create.phtml-->
+<a href="../admin-gestion.php">Retour</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+<h2>Création d'un nouvel utilisateur</h2>
+<form action="user-account-create.php" method="post">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="userName" required>
+    <br>
+
+    <label for="mot_de_passe">Mot de passe :</label>
+    <input type="password" id="mot_de_passe" name="userPswd" required>
+    <br>
+
+    <label for="confirmer_mot_de_passe">Confirmer le mot de passe :</label>
+    <input type="password" id="confirmer_mot_de_passe" name="userPswdConfirm" required>
+    <br>
+
+    <input type="hidden" name="userRole" value="Collaborateurs">
+
+    <input type="submit" value="Créer l'utilisateur">
+</form>

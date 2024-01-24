@@ -1,0 +1,25 @@
+<a href="admin-product.php">Retour</a>
+<a href="">ajouter un produit</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Description</th>
+            <th>Famille</th>
+            <th>Groupe</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($products as $product) : ?>
+            <tr>
+                <td style="border: 1px solid black;"><?php echo _escape($product['nomProduits']); ?></td>
+                <td style="border: 1px solid black;"><?php echo _escape($product['prixProduits']); ?></td>
+                <td style="border: 1px solid black;"><?php echo _escape($product['descriptionProduits']); ?></td>
+                <td style="border: 1px solid black;"><?php echo _escape($product['familleProduits']); ?></td>
+                <td style="border: 1px solid black;"><?php echo _escape($product['groupeProduits']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

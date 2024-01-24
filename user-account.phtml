@@ -1,0 +1,28 @@
+<!--user-account.phtml-->
+<script src="js/script.js"></script>
+<a href="admin-gestion.php">Retour</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Nom du compte</th>
+            <th>Role du compte</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($users as $user) : ?>
+            <tr>
+                <td style="border: 1px solid black;"><?php echo ($user['userName']); ?></td>
+                <td style="border: 1px solid black;"><?php echo ($user['userRole']); ?></td>
+                <td>
+                    <a href="crud/user-account-edit.php?id=<?php echo urlencode($user['userId']); ?>">Editer les informations du compte</a>
+                    <?php if ($user['userRole'] !== 'Administrateur') : ?>
+                        <a href="crud/user-account-delete.php" id="deleteUserLink_<?php echo urlencode($user['userId']); ?>">Supprimer le compte</a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+<a href="../admin-gestion.php">Retour</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+<h2>Modifier les informations de l'utilisateur</h2>
+<form action="" method="post">
+    <label for="newUserName">Nouveau nom d'utilisateur:</label>
+    <input type="text" id="newUserName" name="newUserName" required>
+    <br>
+
+    <label for="newPswd">Nouveau mot de passe:</label>
+    <input type="password" id="newPswd" name="newPswd" required>
+    <br>
+
+
+    <label for="newPswdConfirm">Confirmer le mot de passe :</label>
+    <input type="password" id="newPswdConfirm" name="newPswdConfirm" required>
+    <br>
+
+    <button type="submit">Modifier</button>
+</form>

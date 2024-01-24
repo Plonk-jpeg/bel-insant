@@ -1,0 +1,20 @@
+<!--admin-product.phtml-->
+<a href="admin-portal.php">Retour</a>
+<a href="crud/admin-listing-create.php">ajouter un produit</a>
+<a href="admin-group-listing.php">afficher tout les produits</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+<table>
+    <tbody>
+        <?php foreach ($products as $product) : ?>
+            <tr>
+                <td style="border: 1px solid black;">
+                    <a href="admin-group-listing.php?categorie=<?php echo urlencode($product['groupeProduits']); ?>">
+                        <?php echo _escape($product['groupeProduits']); ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

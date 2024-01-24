@@ -1,0 +1,41 @@
+<!--admin-listing-create.phtml-->
+<a href="../admin-product.php">Retour</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+<h1>Nouveau produit</h1>
+
+<form action="admin-listing-create.php" method="post" enctype="multipart/form-data">
+
+    <label for="nom">Entrer le nom du produit</label>
+    <input type="text" name="nomProduits" id="nom" required>
+    <br>
+    <label for="prix">Entrer le prix du produit</label>
+    <input type="decimal" step="00.01" min="0" name="prixProduits" id="prix" required>€
+    <br>
+
+    <label for="description" style="position: relative; top: -20px;">Description du produit</label>
+    <textarea name="descriptionProduits" id="description"></textarea>
+    <br>
+
+    <label for="famille">Choisir une famille</label>
+    <select name="familleProduits" id="famille">
+        <option>Choisir une famille</option>
+        <?php foreach ($familleProduits as $familleProduit) : ?>
+            <option value="<?php echo _escape($familleProduit['familleProduits']); ?>"><?php echo _escape($familleProduit['familleProduits']); ?></option>
+        <?php endforeach ?>
+    </select>
+    <br>
+
+
+    <label for="groupe">Choisir un groupe</label>
+    <select name="groupeProduits" id="groupe">
+        <?php foreach ($groupeProduits as $groupeProduit) : ?>
+            <option value="<?php echo _escape($groupeProduit['groupeProduits']); ?>"><?php echo _escape($groupeProduit['groupeProduits']); ?></option>
+        <?php endforeach ?>
+    </select>
+
+    <button>Enregistrer</button>
+</form>
+
+<!--productId productPicture productPrice productName productQuote productQuantity productDescription productStyle productAbv productHops productMalt productIngredient categoryId-->

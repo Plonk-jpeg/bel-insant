@@ -1,0 +1,60 @@
+<!--admin-group-listing.phtml-->
+<style>
+    /* Ajoutez ce style pour la couleur verte lorsque la checkbox est cochée */
+    .selected-row {
+        background-color: #aaffaa !important;
+    }
+</style>
+<a href="admin-product.php">Retour</a>
+<form action="libs/LogOut.php" method="post">
+    <button type="submit" name="logout">Se déconnecter</button>
+</form>
+
+<form action="crud/admin-listing-delete.php" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Famille</th>
+                <th>Groupe</th>
+                <?php if ($categorie == 'Menus du midi' || $categorie == 'Patisseries/Viennoiseries') : ?>
+                    <th>Choix</th>
+                <?php endif; ?>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($products as $product) : ?>
+                <tr id="row_<?php echo urlencode($product['idProduits']); ?>" class="<?php echo (in_array(urlencode($product['idProduits']), $selectedRows)) ? 'selected-row' : ''; ?>">
+                    <td style="border: 1px solid black;"><?php echo htmlspecialchars($product['nomProduits']); ?></td>
+                    <td style="border: 1px solid black;"><?php echo htmlspecialchars($product['prixProduits']); ?></td>
+                    <td style="border: 1px solid black;" id="descriptionCell_<?php echo urlencode($product['idProduits']); ?>">
+                        <?php
+                        $description = htmlspecialchars($product['descriptionProduits']);
+                        echo limiterCaracteres($description, 50);
+                        ?>
+                    </td>
+                    <td style="border: 1px solid black;"><?php echo htmlspecialchars($product['familleProduits']); ?></td>
+                    <td style="border: 1px solid black;"><?php echo htmlspecialchars($product['groupeProduits']); ?></td>
+                    <?php if ($categorie == 'Menus du midi' || $categorie == 'Patisseries/Viennoiseries') : ?>
+                        <td>
+                            <input type="checkbox" name="choixProduit[]" value="<?php echo urlencode($product['idProduits']); ?>" <?php echo (in_array(urlencode($product['idProduits']), $selectedRows)) ? 'checked' : ''; ?>>
+                        </td>
+                    <?php endif; ?>
+                    <td>
+                        <a href="crud/admin-listing-edit.php?id=<?php echo urlencode($product['idProduits']); ?>">Editer</a>
+                        <button type="submit" name="supprimer" value="<?php echo urlencode($product['idProduits']); ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce produit ?')">Supprimer</button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php if ($categorie == 'Menus du midi' || $categorie == 'Patisseries/Viennoiseries') : ?>
+        <input type="hidden" name="categorie" value="<?php echo htmlspecialchars($categorie); ?>">
+    <?php endif; ?>
+</form>
+
+<script src="js/checkbox.js"></script>
